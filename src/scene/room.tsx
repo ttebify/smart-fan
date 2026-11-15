@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
-import { ROOM } from '../brain';
-import { mat } from './materials';
+import { ROOM } from '@/brain';
+import { mat } from '@/scene/materials';
 
 const WALLS: [w: number, d: number, x: number, z: number][] = [
   [ROOM.hw * 2 + 0.2, 0.1, 0, -ROOM.hd],

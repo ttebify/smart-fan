@@ -1,5 +1,4 @@
-// Set this to the public repository once it exists; the link is hidden while it is empty.
-const SOURCE_URL = '';
+const SOURCE_URL = 'https://github.com/ttebify/smart-fan';
 
 export function Credit() {
   return (

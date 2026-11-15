@@ -1,12 +1,12 @@
 import { Canvas } from '@react-three/fiber';
-import { Airflow } from './airflow';
-import { CalloutLayout } from './callouts';
-import { CameraRig } from './camera-rig';
-import { Entities } from './entities';
-import { Fan } from './fan';
-import { Room } from './room';
-import { Sectors } from './sectors';
-import { Simulation } from './simulation';
+import { Airflow } from '@/scene/airflow';
+import { CalloutLayout } from '@/scene/callouts';
+import { CameraRig } from '@/scene/camera-rig';
+import { Entities } from '@/scene/entities';
+import { Fan } from '@/scene/fan';
+import { Room } from '@/scene/room';
+import { Sectors } from '@/scene/sectors';
+import { Simulation } from '@/scene/simulation';
 
 const BG = 0x0b0f17;
 

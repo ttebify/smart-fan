@@ -1,15 +1,15 @@
 import { useEffect, useSyncExternalStore } from 'react';
-import { CalloutLayer } from './scene/callouts';
-import { TagLayer } from './scene/entities';
-import { Scene } from './scene/scene';
-import { useDrag } from './scene/use-drag';
-import { useStore } from './sim/store';
-import { ControlPanel } from './ui/control-panel';
-import { Credit } from './ui/credit';
-import { GLFallback } from './ui/gl-fallback';
-import { MechPanel } from './ui/mech-panel';
-import { Palette } from './ui/palette';
-import { PhoneSheet } from './ui/phone-sheet';
+import { CalloutLayer } from '@/scene/callouts';
+import { TagLayer } from '@/scene/entities';
+import { Scene } from '@/scene/scene';
+import { useDrag } from '@/scene/use-drag';
+import { useStore } from '@/sim/store';
+import { ControlPanel } from '@/ui/control-panel';
+import { Credit } from '@/ui/credit';
+import { GLFallback } from '@/ui/gl-fallback';
+import { MechPanel } from '@/ui/mech-panel';
+import { Palette } from '@/ui/palette';
+import { PhoneSheet } from '@/ui/phone-sheet';
 
 const PHONE = '(max-width: 720px)';
 function useIsPhone() {
@@ -66,7 +66,7 @@ export function App() {
         </>
       )}
       <button type="button" className="restore show-left" onClick={() => set({ hideLeft: false })}>+ Objects</button>
-      <div className="keys"><kbd>H</kbd>hide everything &nbsp; <kbd>L</kbd>labels</div>
+      <div className="keys"><kbd>H</kbd>show / hide panels &nbsp; <kbd>L</kbd>show / hide labels</div>
       <Credit />
     </div>
   );

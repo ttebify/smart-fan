@@ -1,10 +1,12 @@
 import { useFrame } from '@react-three/fiber';
 import { useMemo, useRef } from 'react';
 import * as THREE from 'three';
-import { BEAM, FAN } from '../brain';
-import { useStore } from '../sim/store';
-import { world } from '../sim/world';
-import { RAD } from './materials';
+import { BEAM, FAN } from '@/brain';
+import { useStore } from '@/sim/store';
+import { world } from '@/sim/world';
+import { DRAW } from '@/scene/gear';
+import { RAD } from '@/scene/materials';
+import { HEAD_LIFT } from '@/scene/neck-drive';
 
 const N = 900, LIFE = 1.7;
 
@@ -23,7 +25,7 @@ export function Airflow() {
     const { showAir, entities } = useStore.getState();
     points.current.visible = showAir && world.ex < 0.5; // particles get in the way close up
     if (!showAir) return;
-    const dt = Math.min(0.05, delta), headDeg = world.brain.head, headY = 1.5 + 0.58 * world.ex;
+    const dt = Math.min(0.05, delta), headDeg = world.brain.head, headY = 1.5 + HEAD_LIFT * DRAW * world.ex;
     const { pos, col, vel, life } = p;
     let budget = Math.round((N / LIFE) * dt * world.power * 1.1);
     for (let i = 0; i < N; i++) {

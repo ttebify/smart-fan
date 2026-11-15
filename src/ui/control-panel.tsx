@@ -3,8 +3,8 @@ import { Meter, MeterIndicator, MeterLabel, MeterTrack } from '@ui-sdk/react/met
 import { SegmentedControl, SegmentedControlIndicator, SegmentedControlItem } from '@ui-sdk/react/segmented-control';
 import { Slider, SliderControl, SliderIndicator, SliderThumb, SliderTrack } from '@ui-sdk/react/slider';
 import { Switch, SwitchThumb } from '@ui-sdk/react/switch';
-import { useStore, type TuneKey } from '../sim/store';
-import { Radar } from './radar';
+import { useStore, type TuneKey } from '@/sim/store';
+import { Radar } from '@/ui/radar';
 
 function Mode() {
   const smart = useStore(s => s.params.smart);
@@ -26,9 +26,9 @@ function Stats() {
   const state = useStore(s => s.telemetry.state);
   return (
     <div className="stats">
-      <div><b>{sweep === null ? '–' : sweep + '°'}</b><small>sweep</small></div>
-      <div><b>{people}</b><small>people tracked</small></div>
-      <div><b>{state}</b><small>state</small></div>
+      <div><b>{sweep === null ? '–' : sweep + '°'}</b><small>swing range</small></div>
+      <div><b>{people}</b><small>people found</small></div>
+      <div><b>{{ 'full sweep': 'full swing', cooling: 'aiming', idle: 'resting' }[state]}</b><small>fan status</small></div>
     </div>
   );
 }
@@ -88,18 +88,18 @@ export function Controls() {
       <Radar />
       <Stats />
 
-      <h3>Air landing on people</h3>
+      <h3>Time aimed at people</h3>
       <Score label="Smart" mode="smart" />
       <Score label="Ordinary" mode="dumb" />
-      <p className="hint">Switch modes for a while to compare.</p>
+      <p className="hint">Shows how often the fan points toward someone within reach. Try each mode for a while to compare. Demo only.</p>
 
-      <h3>Tuning</h3>
-      <Tune label="Confidence threshold" k="threshold" min={0.3} max={0.95} step={0.01} fmt={v => v.toFixed(2)} />
-      <Tune label="Edge margin" k="margin" min={0} max={20} step={1} fmt={v => v + '°'} />
-      <Tune label="Hold after losing someone" k="hold" min={0} max={8} step={0.5} fmt={v => v + ' s'} />
-      <Tune label="Sensor noise" k="noise" min={0} max={3} step={0.1} fmt={v => v.toFixed(1) + '×'} />
-      <Check label="Skip quickly across empty gaps" checked={gapSkip} onChange={on => setParam('gapSkip', on)} />
-      <Check label="Show airflow" checked={showAir} onChange={on => set({ showAir: on })} />
+      <h3>Try different settings</h3>
+      <Tune label="How sure it must be" k="threshold" min={0.3} max={0.95} step={0.01} fmt={v => Math.round(v * 100) + '%'} />
+      <Tune label="Extra swing on each side" k="margin" min={0} max={20} step={1} fmt={v => v + '°'} />
+      <Tune label="Remember someone for" k="hold" min={0} max={8} step={0.5} fmt={v => v + ' s'} />
+      <Tune label="Detection errors" k="noise" min={0} max={3} step={0.1} fmt={v => v.toFixed(1) + '×'} />
+      <Check label="Turn faster through empty spaces" checked={gapSkip} onChange={on => setParam('gapSkip', on)} />
+      <Check label="Show air direction" checked={showAir} onChange={on => set({ showAir: on })} />
     </>
   );
 }

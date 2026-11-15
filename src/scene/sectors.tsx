@@ -1,9 +1,9 @@
 import { useFrame } from '@react-three/fiber';
 import { useMemo, useRef } from 'react';
 import * as THREE from 'three';
-import { BEAM, FAN, FOV, RANGE } from '../brain';
-import { world } from '../sim/world';
-import { RAD } from './materials';
+import { BEAM, FAN, FOV, RANGE } from '@/brain';
+import { world } from '@/sim/world';
+import { RAD } from '@/scene/materials';
 
 const SEGMENTS = 50;
 

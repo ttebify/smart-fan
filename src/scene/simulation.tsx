@@ -1,10 +1,9 @@
 import { useFrame } from '@react-three/fiber';
 import { useRef } from 'react';
-import { BEAM, MECH, RANGE, bearingOf, distOf, inRoom, occluded } from '../brain';
-import { useStore } from '../sim/store';
-import { world } from '../sim/world';
-import { FRICTION, HEAD_INERTIA } from './gear';
-import { RAD } from './materials';
+import { BEAM, MECH, RANGE, bearingOf, distOf, inRoom, occluded } from '@/brain';
+import { useStore } from '@/sim/store';
+import { world } from '@/sim/world';
+import { neckTorque } from '@/scene/gear';
 
 /**
  * Advances the simulation once per frame, before anything draws (priority -1).
@@ -53,7 +52,7 @@ export function Simulation() {
           dumb: pct(eff.dumb),
           angle: brain.head,
           speed,
-          tNeck: HEAD_INERTIA * Math.abs(world.accel) * RAD + (speed > 0.5 ? FRICTION : 0),
+          tNeck: neckTorque(world.accel, speed > 0.5),
         },
       });
     }

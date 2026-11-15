@@ -3,8 +3,8 @@
 // React state (store.ts) only holds what changes on a user action or at 5 Hz.
 
 import type { Camera } from 'three';
-import { Brain, type Body } from '../brain';
-import type { KindId } from './kinds';
+import { Brain, type Body } from '@/brain';
+import type { KindId } from '@/sim/kinds';
 
 export interface Entity extends Body {
   kind: KindId;
