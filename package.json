@@ -15,6 +15,7 @@
     "@react-three/fiber": "^9.8.2",
     "@ui-sdk/core": "0.1.0-beta.3",
     "@ui-sdk/react": "0.1.0-beta.3",
+    "@vercel/analytics": "^2.0.1",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "three": "^0.170.0",
