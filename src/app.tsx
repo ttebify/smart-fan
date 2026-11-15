@@ -1,4 +1,5 @@
 import { useEffect, useSyncExternalStore } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { CalloutLayer } from '@/scene/callouts';
 import { TagLayer } from '@/scene/entities';
 import { Scene } from '@/scene/scene';
@@ -68,6 +69,7 @@ export function App() {
       <button type="button" className="restore show-left" onClick={() => set({ hideLeft: false })}>+ Objects</button>
       <div className="keys"><kbd>H</kbd>show / hide panels &nbsp; <kbd>L</kbd>show / hide labels</div>
       <Credit />
+      <Analytics />
     </div>
   );
 }
