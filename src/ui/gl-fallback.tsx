@@ -27,7 +27,7 @@ export class GLFallback extends Component<{ children: ReactNode }, { failed: boo
       <div className="fatal" role="alert">
         {this.state.retrying ? 'Starting 3D graphics…' : (
           <>
-            <b>The browser would not start 3D graphics (WebGL).</b>
+            <b>The 3D scene could not load.</b>
             Close other tabs using 3D, then reload. If that fails, restart the browser.
           </>
         )}

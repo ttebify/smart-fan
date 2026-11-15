@@ -4,7 +4,10 @@
 
 export const FAN = { x: 0, z: -3.9 };
 export const ROOM = { hw: 6, hd: 4.5 }; // half width (x) and half depth (z)
-export const MECH = 70; // mechanical swing limit, degrees each side
+export const MECH = 70; // software travel limit, degrees each side
+export const HARD_STOP = 75; // physical end stops; the head should never reach them
+export const MAX_SPEED = 95; // fastest the head turns, degrees per second
+export const MAX_ACCEL = 260; // degrees per second squared
 export const FOV = 75; // sensor field of view, degrees each side
 export const RANGE = 8.5; // sensor range, metres
 export const BEAM = 10; // half-width of the useful air cone, degrees
@@ -169,12 +172,15 @@ export class Brain {
         // Linger on people, hurry across the empty space between them.
         const near = Math.min(...people.map(b => Math.abs(b - this.head)));
         const t = clamp((near - 8) / 14, 0, 1);
-        speed = 22 + (95 - 22) * t * t * (3 - 2 * t);
+        speed = 22 + (MAX_SPEED - 22) * t * t * (3 - 2 * t);
       }
       const room = this.dir > 0 ? this.limMax - this.head : this.head - this.limMin;
-      target = this.dir * speed * clamp(room / 5, 0.12, 1); // ease into each turnaround
+      // Never approach a limit faster than the drive can stop (v² = 2·a·d, with 30% in hand),
+      // so the head arrives at a crawl instead of running into its end stop.
+      const stoppable = Math.sqrt(2 * 0.7 * MAX_ACCEL * Math.max(room, 0));
+      target = this.dir * Math.max(Math.min(speed, stoppable), 3);
     }
-    this.vel += clamp(target - this.vel, -260 * dt, 260 * dt);
+    this.vel += clamp(target - this.vel, -MAX_ACCEL * dt, MAX_ACCEL * dt);
     this.head = clamp(this.head + this.vel * dt, -MECH, MECH);
   }
 }

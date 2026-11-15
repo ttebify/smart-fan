@@ -10,9 +10,9 @@ import { floorPoint, startDrag } from '@/scene/use-drag';
 const STATUS_TEXT: Record<string, string> = {
   outside: 'outside the room',
   range: 'out of range',
-  fov: 'outside field of view',
-  occluded: 'hidden from sensor',
-  missed: 'missed this frame',
+  fov: 'outside camera view',
+  occluded: 'hidden behind an object',
+  missed: 'not spotted this time',
 };
 const RING_COLOR: Record<string, number> = { ok: 0x5be38a, bad: 0xff5d6c, no: 0xffb648, '': 0x6b7689 };
 
@@ -21,9 +21,9 @@ function verdict(e: Entity, threshold: number): [cls: string, text: string] {
   const r = world.brain.readings.get(e.id);
   if (!r) return ['', '…'];
   if (r.status !== 'seen') return ['', STATUS_TEXT[r.status]];
-  const c = r.conf.toFixed(2);
+  const c = `${Math.round(r.conf * 100)}% sure`;
   if (r.conf < threshold) return ['no', e.kind === 'person' ? `person? ${c} · too unsure` : `person? ${c} · ignored`];
-  return e.kind === 'person' ? ['ok', `person ${c}`] : ['bad', `person ${c} · fooled!`];
+  return e.kind === 'person' ? ['ok', `person ${c}`] : ['bad', `person ${c} · mistaken!`];
 }
 
 // The label for each object is plain DOM outside the canvas (see TagLayer). The mesh

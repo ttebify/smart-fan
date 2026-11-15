@@ -31,7 +31,7 @@ export function Palette() {
           </button>
         ))}
       </div>
-      <p className="hint">Drag anything around the floor. Drop it back on this panel to remove it. Drag empty floor to orbit, scroll to zoom.</p>
+      <p className="hint">Drag an item into the room, then move it around. Drop it back here to remove it. Drag empty floor to look around; scroll to zoom. Select the fan to look inside.</p>
     </aside>
   );
 }

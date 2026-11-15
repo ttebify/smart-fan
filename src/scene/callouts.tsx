@@ -1,21 +1,20 @@
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
-import { FOV } from '@/brain';
 import { useStore } from '@/sim/store';
-import { RATIO, T_GEAR, T_PIN } from '@/scene/gear';
 
 // Labels for the mechanism view. Each one has three pieces that live in different trees:
 // an anchor inside the 3D model, a DOM label outside the canvas, and a layout pass that
 // joins them every frame. They meet through these two module-level arrays.
 export const CALLOUTS = [
-  { title: 'Output gear', spec: `${T_GEAR} teeth · module 1 · fixed to head shaft` },
-  { title: 'Pinion', spec: `${T_PIN} teeth · ${RATIO}:1 reduction` },
-  { title: 'Stepper motor', spec: 'NEMA 17 · 1.8°/step · 1/16 microstep' },
-  { title: 'Bearings ×2', spec: 'deep-groove · carry the head weight' },
-  { title: 'Hollow head shaft', spec: 'fan power cable runs through it' },
-  { title: 'Home sensor', spec: 'hall sensor + magnet · finds 0° at power-on' },
-  { title: 'Controller', spec: 'MCU + stepper driver · tracker and sweep logic' },
-  { title: 'Camera', spec: `wide-angle, on the fixed pole · ±${FOV}° view` },
+  { title: 'Large gear', spec: 'Turns the fan head' },
+  { title: 'Small gear', spec: 'Passes the motor’s movement to the large gear' },
+  { title: 'Turning motor', spec: 'Controls the swing' },
+  { title: 'Bearings', spec: 'Help the fan turn smoothly' },
+  { title: 'Hollow shaft', spec: 'Supports the fan head; holds the cable inside' },
+  { title: 'Centre sensor', spec: 'Marks the centre position' },
+  { title: 'Control board', spec: 'Decides where the fan points' },
+  { title: 'Camera', spec: 'Looks for people in the room' },
+  { title: 'Motor plate', spec: 'Holds the motor and gears in place' },
 ];
 
 const anchors: (THREE.Object3D | null)[] = [];

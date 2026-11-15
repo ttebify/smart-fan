@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import {
-  BEAM, Brain, FAN, FOV, MECH, RANGE, bearingOf, distOf, inRoom, occluded, sense,
+  BEAM, Brain, FAN, FOV, HARD_STOP, MAX_ACCEL, MAX_SPEED, MECH, RANGE, bearingOf, distOf, inRoom, occluded, sense,
   type Body, type Params, type Reading,
 } from '@/brain';
 
@@ -25,6 +25,10 @@ describe('constants', () => {
   it('lets the sensor see further than the fan can turn', () => {
     expect(FOV).toBeGreaterThan(MECH);
     expect(BEAM).toBeGreaterThan(0);
+  });
+
+  it('puts the physical end stops outside the software travel', () => {
+    expect(HARD_STOP).toBeGreaterThan(MECH);
   });
 });
 
@@ -181,5 +185,25 @@ describe('Brain', () => {
       brain.update(0.05, i * 0.05, [], p);
       expect(Math.abs(brain.head)).toBeLessThanOrEqual(MECH);
     }
+  });
+
+  it('stays within the drive limits and reaches a sweep limit at a crawl', () => {
+    // Widest margin and a person near the edge: the fastest approach to the travel limit.
+    const brain = new Brain();
+    const p = params({ margin: 20 });
+    const bodies = [person(1, -3, -1.5), person(2, 3.5, -2)];
+    const dt = 1 / 60;
+    let prev = 0, worst = 0;
+    for (let i = 1; i <= 60 * 40; i++) {
+      brain.update(dt, i * dt, bodies, p);
+      expect(Math.abs(brain.vel)).toBeLessThanOrEqual(MAX_SPEED + 1e-6);
+      expect(Math.abs(brain.vel - prev) / dt).toBeLessThanOrEqual(MAX_ACCEL + 1e-6);
+      prev = brain.vel;
+      // Once the limits have settled, measure the speed at which the head crosses them.
+      if (i > 60 * 10 && (brain.head >= brain.limMax || brain.head <= brain.limMin)) worst = Math.max(worst, Math.abs(brain.vel));
+    }
+    expect(brain.limMax).toBeCloseTo(MECH, 0);
+    expect(worst).toBeGreaterThan(0);
+    expect(worst).toBeLessThan(8);
   });
 });

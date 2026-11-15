@@ -6,10 +6,14 @@ import { useStore } from '@/sim/store';
 import { world } from '@/sim/world';
 import { CalloutAnchor } from '@/scene/callouts';
 import { RAD, cage, dark, mat, shell, white } from '@/scene/materials';
-import { NeckDrive } from '@/scene/neck-drive';
+import { DRAW } from '@/scene/gear';
+import { HEAD_LIFT, NeckDrive } from '@/scene/neck-drive';
 
 const RINGS: [r: number, z: number][] = [[0.46, 0.1], [0.46, 0.2], [0.3, 0.26], [0.3, 0.04]];
 const SPOKES = 16, BLADES = 4;
+const HOUSING_R = 0.09 * DRAW; // a 180 mm housing, the smallest that clears the motor
+// The blades turn at a fraction of real speed (about 1200 rpm), which would only strobe at 60 fps.
+const BLADE_SPIN = 38;
 
 export function Fan() {
   const head = useRef<THREE.Group>(null!), blades = useRef<THREE.Group>(null!);
@@ -21,8 +25,8 @@ export function Fan() {
     const dt = Math.min(0.05, delta);
     const { brain, power, ex } = world;
     head.current.rotation.y = brain.head * RAD;
-    head.current.position.y = 1.5 + 0.58 * ex; // the head lifts off as the housing opens
-    blades.current.rotation.z -= dt * 38 * power;
+    head.current.position.y = 1.5 + HEAD_LIFT * DRAW * ex; // the head lifts off as the housing opens
+    blades.current.rotation.z -= dt * BLADE_SPIN * power;
     shellA.current.position.x = 0.42 * ex;
     shellB.current.position.x = -0.42 * ex;
     shell.opacity = 1 - 0.8 * ex;
@@ -87,16 +91,16 @@ export function Fan() {
           </mesh>
         </group>
         <mesh castShadow material={white} position-y={-0.06}>{/* housing lid lifts with the head */}
-          <cylinderGeometry args={[0.24, 0.24, 0.02, 32]} />
+          <cylinderGeometry args={[HOUSING_R, HOUSING_R, 0.02, 32]} />
         </mesh>
       </group>
 
       {/* Neck housing: two half shells that slide apart. */}
       <mesh ref={shellA} castShadow material={shell} position-y={1.32}>
-        <cylinderGeometry args={[0.24, 0.24, 0.24, 32, 1, true, 0, Math.PI]} />
+        <cylinderGeometry args={[HOUSING_R, HOUSING_R, 0.24, 32, 1, true, 0, Math.PI]} />
       </mesh>
       <mesh ref={shellB} castShadow material={shell} position-y={1.32}>
-        <cylinderGeometry args={[0.24, 0.24, 0.24, 32, 1, true, Math.PI, Math.PI]} />
+        <cylinderGeometry args={[HOUSING_R, HOUSING_R, 0.24, 32, 1, true, Math.PI, Math.PI]} />
       </mesh>
 
       <NeckDrive />

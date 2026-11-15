@@ -54,12 +54,12 @@ export function Radar() {
   }, []);
   return (
     <>
-      <canvas ref={canvas} className="radar" width={W * 2} height={H * 2} role="img" aria-label="Top-down view of what the sensor detects" />
+      <canvas ref={canvas} className="radar" width={W * 2} height={H * 2} role="img" aria-label="View from above showing what the fan can see" />
       <div className="legend">
         <span><i className="dot ok" />person</span>
         <span><i className="dot no" />ignored</span>
-        <span><i className="dot bad" />fooled</span>
-        <span><i className="dot trk" />track</span>
+        <span><i className="dot bad" />mistaken</span>
+        <span><i className="dot trk" />following</span>
       </div>
     </>
   );

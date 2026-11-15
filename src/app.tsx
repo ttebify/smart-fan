@@ -66,7 +66,7 @@ export function App() {
         </>
       )}
       <button type="button" className="restore show-left" onClick={() => set({ hideLeft: false })}>+ Objects</button>
-      <div className="keys"><kbd>H</kbd>hide everything &nbsp; <kbd>L</kbd>labels</div>
+      <div className="keys"><kbd>H</kbd>show / hide panels &nbsp; <kbd>L</kbd>show / hide labels</div>
       <Credit />
     </div>
   );

@@ -49,3 +49,5 @@ To use a real detector later (for example a webcam model), replace `sense` with 
 - Labels above objects and the mechanism callouts are plain DOM outside the canvas. The scene positions them every frame through refs, so they stay sharp and cost no React renders.
 - A drag can start on an object in the canvas or on a palette button outside it, so the pointer maths lives in one module (`src/scene/use-drag.ts`).
 - On a phone the side panels move into a bottom sheet that is not modal, so the room stays usable while you tune.
+
+The parts and readings shown in the simulator are for demo purposes only.
