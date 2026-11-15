@@ -2,9 +2,9 @@ import { OrbitControls } from '@react-three/drei';
 import { useFrame, useThree } from '@react-three/fiber';
 import { useEffect, useRef, type ComponentRef } from 'react';
 import * as THREE from 'three';
-import { FAN } from '../brain';
-import { useStore } from '../sim/store';
-import { world } from '../sim/world';
+import { FAN } from '@/brain';
+import { useStore } from '@/sim/store';
+import { world } from '@/sim/world';
 
 interface Flight { p0: THREE.Vector3; p1: THREE.Vector3; t0: THREE.Vector3; t1: THREE.Vector3; k: number }
 

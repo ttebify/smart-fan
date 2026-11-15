@@ -1,7 +1,7 @@
 import { Drawer, DrawerClose, DrawerContent, DrawerTitle, DrawerTrigger } from '@ui-sdk/react/drawer';
-import { useStore } from '../sim/store';
-import { Controls } from './control-panel';
-import { MechDetails } from './mech-panel';
+import { useStore } from '@/sim/store';
+import { Controls } from '@/ui/control-panel';
+import { MechDetails } from '@/ui/mech-panel';
 
 /**
  * On a phone the side panels would cover the room, so their contents move into a bottom

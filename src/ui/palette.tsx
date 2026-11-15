@@ -1,8 +1,8 @@
 import { Button } from '@ui-sdk/react/button';
 import * as THREE from 'three';
-import { floorPoint, startDrag } from '../scene/use-drag';
-import { KINDS, KIND_IDS } from '../sim/kinds';
-import { useStore } from '../sim/store';
+import { floorPoint, startDrag } from '@/scene/use-drag';
+import { KINDS, KIND_IDS } from '@/sim/kinds';
+import { useStore } from '@/sim/store';
 
 /** Things to drag into the room. Dropping an object back here removes it. */
 export function Palette() {

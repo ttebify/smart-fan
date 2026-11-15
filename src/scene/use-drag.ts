@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import * as THREE from 'three';
-import { useStore } from '../sim/store';
-import { world, type Entity } from '../sim/world';
+import { useStore } from '@/sim/store';
+import { world, type Entity } from '@/sim/world';
 
 // Dragging objects across the floor. A drag can start inside the canvas (on an object)
 // or outside it (on a palette button), so the pointer maths lives here, not in the scene.

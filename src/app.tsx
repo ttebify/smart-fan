@@ -1,15 +1,15 @@
 import { useEffect, useSyncExternalStore } from 'react';
-import { CalloutLayer } from './scene/callouts';
-import { TagLayer } from './scene/entities';
-import { Scene } from './scene/scene';
-import { useDrag } from './scene/use-drag';
-import { useStore } from './sim/store';
-import { ControlPanel } from './ui/control-panel';
-import { Credit } from './ui/credit';
-import { GLFallback } from './ui/gl-fallback';
-import { MechPanel } from './ui/mech-panel';
-import { Palette } from './ui/palette';
-import { PhoneSheet } from './ui/phone-sheet';
+import { CalloutLayer } from '@/scene/callouts';
+import { TagLayer } from '@/scene/entities';
+import { Scene } from '@/scene/scene';
+import { useDrag } from '@/scene/use-drag';
+import { useStore } from '@/sim/store';
+import { ControlPanel } from '@/ui/control-panel';
+import { Credit } from '@/ui/credit';
+import { GLFallback } from '@/ui/gl-fallback';
+import { MechPanel } from '@/ui/mech-panel';
+import { Palette } from '@/ui/palette';
+import { PhoneSheet } from '@/ui/phone-sheet';
 
 const PHONE = '(max-width: 720px)';
 function useIsPhone() {

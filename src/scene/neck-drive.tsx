@@ -1,10 +1,10 @@
 import { useFrame } from '@react-three/fiber';
 import { useMemo, useRef } from 'react';
 import * as THREE from 'three';
-import { world } from '../sim/world';
-import { CalloutAnchor } from './callouts';
-import { PIN_Z, RATIO, R_GEAR, T_GEAR, T_PIN, gearGeo } from './gear';
-import { RAD, brass, dark, mat, steel } from './materials';
+import { world } from '@/sim/world';
+import { CalloutAnchor } from '@/scene/callouts';
+import { PIN_Z, RATIO, R_GEAR, T_GEAR, T_PIN, gearGeo } from '@/scene/gear';
+import { RAD, brass, dark, mat, steel } from '@/scene/materials';
 
 /**
  * The mechanism you see when you click the fan: stepper -> pinion -> output gear on the

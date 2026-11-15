@@ -1,10 +1,10 @@
 import { useFrame } from '@react-three/fiber';
 import { useRef } from 'react';
-import { BEAM, MECH, RANGE, bearingOf, distOf, inRoom, occluded } from '../brain';
-import { useStore } from '../sim/store';
-import { world } from '../sim/world';
-import { FRICTION, HEAD_INERTIA } from './gear';
-import { RAD } from './materials';
+import { BEAM, MECH, RANGE, bearingOf, distOf, inRoom, occluded } from '@/brain';
+import { useStore } from '@/sim/store';
+import { world } from '@/sim/world';
+import { FRICTION, HEAD_INERTIA } from '@/scene/gear';
+import { RAD } from '@/scene/materials';
 
 /**
  * Advances the simulation once per frame, before anything draws (priority -1).

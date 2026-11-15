@@ -1,8 +1,8 @@
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
-import { FOV } from '../brain';
-import { useStore } from '../sim/store';
-import { RATIO, T_GEAR, T_PIN } from './gear';
+import { FOV } from '@/brain';
+import { useStore } from '@/sim/store';
+import { RATIO, T_GEAR, T_PIN } from '@/scene/gear';
 
 // Labels for the mechanism view. Each one has three pieces that live in different trees:
 // an anchor inside the 3D model, a DOM label outside the canvas, and a layout pass that

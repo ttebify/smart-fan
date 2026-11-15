@@ -1,10 +1,10 @@
 import { useFrame } from '@react-three/fiber';
 import { useMemo, useRef } from 'react';
 import * as THREE from 'three';
-import { BEAM, FAN } from '../brain';
-import { useStore } from '../sim/store';
-import { world } from '../sim/world';
-import { RAD } from './materials';
+import { BEAM, FAN } from '@/brain';
+import { useStore } from '@/sim/store';
+import { world } from '@/sim/world';
+import { RAD } from '@/scene/materials';
 
 const N = 900, LIFE = 1.7;
 

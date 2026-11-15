@@ -1,12 +1,12 @@
 import { useFrame } from '@react-three/fiber';
 import { useMemo, useRef } from 'react';
 import * as THREE from 'three';
-import { FAN } from '../brain';
-import { useStore } from '../sim/store';
-import { world } from '../sim/world';
-import { CalloutAnchor } from './callouts';
-import { RAD, cage, dark, mat, shell, white } from './materials';
-import { NeckDrive } from './neck-drive';
+import { FAN } from '@/brain';
+import { useStore } from '@/sim/store';
+import { world } from '@/sim/world';
+import { CalloutAnchor } from '@/scene/callouts';
+import { RAD, cage, dark, mat, shell, white } from '@/scene/materials';
+import { NeckDrive } from '@/scene/neck-drive';
 
 const RINGS: [r: number, z: number][] = [[0.46, 0.1], [0.46, 0.2], [0.3, 0.26], [0.3, 0.04]];
 const SPOKES = 16, BLADES = 4;

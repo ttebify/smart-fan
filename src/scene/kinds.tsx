@@ -1,8 +1,8 @@
 import type { ThreeElements } from '@react-three/fiber';
 import { useMemo, type ComponentType } from 'react';
 import * as THREE from 'three';
-import type { KindId } from '../sim/kinds';
-import { cage, dark, mat, wood, woodDark } from './materials';
+import type { KindId } from '@/sim/kinds';
+import { cage, dark, mat, wood, woodDark } from '@/scene/materials';
 
 // The 3D model for each kind of object. Data about them (label, detector score) is in sim/kinds.ts.
 

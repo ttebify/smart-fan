@@ -1,11 +1,11 @@
 import { useFrame } from '@react-three/fiber';
 import { useRef } from 'react';
 import * as THREE from 'three';
-import { kindSpec } from '../sim/kinds';
-import { useStore } from '../sim/store';
-import { world, type Entity } from '../sim/world';
-import { MODELS } from './kinds';
-import { floorPoint, startDrag } from './use-drag';
+import { kindSpec } from '@/sim/kinds';
+import { useStore } from '@/sim/store';
+import { world, type Entity } from '@/sim/world';
+import { MODELS } from '@/scene/kinds';
+import { floorPoint, startDrag } from '@/scene/use-drag';
 
 const STATUS_TEXT: Record<string, string> = {
   outside: 'outside the room',

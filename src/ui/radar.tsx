@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
-import { BEAM, FOV, MECH, RANGE, bearingOf, distOf } from '../brain';
-import { useStore } from '../sim/store';
-import { world } from '../sim/world';
+import { BEAM, FOV, MECH, RANGE, bearingOf, distOf } from '@/brain';
+import { useStore } from '@/sim/store';
+import { world } from '@/sim/world';
 
 const RAD = Math.PI / 180;
 const W = 280, H = 160, CX = W / 2, CY = 14, S = 16; // S = pixels per metre

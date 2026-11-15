@@ -1,7 +1,7 @@
 import { create } from 'zustand';
-import type { Params } from '../brain';
-import { kindSpec, type KindId } from './kinds';
-import type { Entity } from './world';
+import type { Params } from '@/brain';
+import { kindSpec, type KindId } from '@/sim/kinds';
+import type { Entity } from '@/sim/world';
 
 export type TuneKey = 'threshold' | 'margin' | 'hold' | 'noise';
 

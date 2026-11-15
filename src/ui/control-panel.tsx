@@ -3,8 +3,8 @@ import { Meter, MeterIndicator, MeterLabel, MeterTrack } from '@ui-sdk/react/met
 import { SegmentedControl, SegmentedControlIndicator, SegmentedControlItem } from '@ui-sdk/react/segmented-control';
 import { Slider, SliderControl, SliderIndicator, SliderThumb, SliderTrack } from '@ui-sdk/react/slider';
 import { Switch, SwitchThumb } from '@ui-sdk/react/switch';
-import { useStore, type TuneKey } from '../sim/store';
-import { Radar } from './radar';
+import { useStore, type TuneKey } from '@/sim/store';
+import { Radar } from '@/ui/radar';
 
 function Mode() {
   const smart = useStore(s => s.params.smart);

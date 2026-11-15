@@ -1,6 +1,6 @@
 import { Button } from '@ui-sdk/react/button';
-import { MICROSTEPS, RATIO } from '../scene/gear';
-import { useStore } from '../sim/store';
+import { MICROSTEPS, RATIO } from '@/scene/gear';
+import { useStore } from '@/sim/store';
 
 function Live() {
   const angle = useStore(s => s.telemetry.angle);
