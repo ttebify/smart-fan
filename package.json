@@ -1,0 +1,29 @@
+{
+  "name": "smart-fan",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@react-three/drei": "^10.7.9",
+    "@react-three/fiber": "^9.8.2",
+    "@ui-sdk/core": "0.1.0-beta.3",
+    "@ui-sdk/react": "0.1.0-beta.3",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "three": "^0.170.0",
+    "zustand": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/three": "^0.170.0",
+    "@vitejs/plugin-react": "^6.3.0",
+    "typescript": "^5.6.3",
+    "vite": "^8.3.8"
+  }
+}
